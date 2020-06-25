@@ -11,12 +11,7 @@ namespace ImportData.Console
 {
     class Program
     {
-        static void Main2()
-        {
-            dynamic a = 1;
-
-            a.name = 2;
-        }
+        
         static void Main(string[] args)
         {
             var dbFile = "resultData.db";
