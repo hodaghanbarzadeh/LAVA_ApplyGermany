@@ -12,7 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.css" rel="stylesheet">
+    <link href="style/mdb.css" rel="stylesheet">
 
     <link rel="stylesheet" href="style/select-Uni.css" />
 </head>
@@ -23,7 +23,7 @@
           <header>
         
             <!-- Navbar -->
-            <nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light white top-nav-collapse">
               <div class="container-fluid">
         
                 <!-- Brand -->
@@ -104,7 +104,7 @@
           <!--Main Navigation-->
         
           <!--Main layout-->
-          <main class="pt-5 mx-lg-5">
+          <main class="pt-3 mx-lg-5">
             <div class="container-fluid mt-5">
         
               <!-- Heading -->
@@ -119,13 +119,19 @@
                     <span>Bochum</span>
                   </h4>
         
-                  <form class="d-flex justify-content-center">
+                  <form class="d-flex justify-content-center md-form">
                     <!-- Default input -->
-                    <input type="search" placeholder="Type your City" aria-label="Search" class="form-control">
+                    <input id="CityName" aria-label="Search" class="form-control mdb-autocomplete">
+                    <button class="mdb-autocomplete-clear">
+                      <svg fill="#000000" height="24" viewBox="0 0 24 24" width="24" xmlns="https://www.w3.org/2000/svg">
+                        <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" />
+                        <path d="M0 0h24v24H0z" fill="none" />
+                      </svg>
+                    </button>
+                    <label for="form-autocomplete" class="active">What is your favorite City?</label>
                     <button class="btn btn-primary btn-sm my-0 p" type="submit">
                       <i class="fa fa-search"></i>
                     </button>
-        
                   </form>
         
                 </div>

@@ -207,6 +207,10 @@ namespace ImportData.Crawler
                 return false;
             }
 
+            public override string ToString()
+            {
+                return $"{{{string.Join(",", GetBothList().Select(a=>$"\"{a.Key}\":\"{a.Value}\""))}}}";
+            }
         }
     }
 }

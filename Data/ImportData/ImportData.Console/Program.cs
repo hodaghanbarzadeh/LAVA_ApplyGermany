@@ -5,7 +5,9 @@ using ImportData.Repository;
 using ImportData.Repository.Indiaeducation;
 using ImportData.Repository.SQLite;
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace ImportData.Console
 {
@@ -29,6 +31,9 @@ namespace ImportData.Console
                         System.Console.WriteLine($"{d.UniId} - {d.UniName} - {d.City} - {d.Rank} - {d.Acronym} - {d.Founded}");
                         //rep1.InsertUni(d);
                     }
+                    var s = "let cities=[\""+ string.Join("\",\"" ,((IEnumerable<dynamic>)list).Select(new Func<dynamic,string>( a=>a.City?.Replace(" ...",""))).Distinct());
+                    
+                    s += "\"];";
                     uow.Commit();
                 }
                 catch (System.Exception ex)

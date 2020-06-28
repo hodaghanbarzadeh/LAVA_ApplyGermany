@@ -74,7 +74,7 @@ namespace ImportData.Crawler
         {
         }
 
-        T value;
+        protected T value;
 
         protected HtmlNode node;
         protected virtual HtmlNode GetNode(HtmlNode document)
@@ -105,6 +105,6 @@ namespace ImportData.Crawler
         public StringWebCrawler(string source, string path) : base(source, path)
         {
         }
-        
+        public override dynamic Value => base.value?.Replace("&auml;","ae")?.Replace("&uuml;","ue")?.Replace("&ouml;","oe");
     }
 }
