@@ -11,11 +11,11 @@ $(() => {
     });
   // Regular map
   function regular_map() {
-    var var_location = new google.maps.LatLng(40.725118, -73.997699);
+    var var_location = new google.maps.LatLng(51.427573, 6.800383);
 
     var var_mapoptions = {
       center: var_location,
-      zoom: 14
+      zoom: 6
     };
 
     var var_map = new google.maps.Map(document.getElementById("map-container"),
@@ -24,7 +24,7 @@ $(() => {
     var var_marker = new google.maps.Marker({
       position: var_location,
       map: var_map,
-      title: "New York"
+      title: "DUE uni"
     });
   }
 
