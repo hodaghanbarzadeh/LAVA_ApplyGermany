@@ -4105,7 +4105,7 @@
                 value: function() {
                     var t = this;
                     this.$input.on("blur", (function() {
-                        t.$input.css("border-bottom", t.options.inputBlur), t.$input.css("box-shadow", t.options.inputBlurShadow), t.$autocompleteWrap.empty()
+//                        t.$input.css("border-bottom", t.options.inputBlur), t.$input.css("box-shadow", t.options.inputBlurShadow), t.$autocompleteWrap.empty()
                     }))
                 }
             }, {
@@ -4124,7 +4124,7 @@
                 value: function() {
                     var t = this;
                     this.$input.on("keyup change focus", (function(e) {
-                        if (e.which === t.enterCharCode) return t.options.data.includes(t.$input.val()) || t.options.data.push(t.$input.val()), t.$autocompleteWrap.find(".selected").trigger("mousedown"), t.$autocompleteWrap.empty(), t.inputBlur(), t.count = -1, t.nextScrollHeight = -45, t.count;
+                        if (e.which === t.enterCharCode) return t.options.data.includes(t.$input.val()) , t.$autocompleteWrap.find(".selected").trigger("mousedown"), t.$autocompleteWrap.empty(), t.inputBlur(), t.count = -1, t.nextScrollHeight = -45, t.count;
                         var i = t.$input.val();
                         if (t.$autocompleteWrap.empty(), i.length) {
                             t.appendOptions(t.options.data, i);
