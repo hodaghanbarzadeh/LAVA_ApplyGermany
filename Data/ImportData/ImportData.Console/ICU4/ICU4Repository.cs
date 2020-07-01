@@ -7,17 +7,14 @@ namespace ImportData.Console.indiaeducation
     public class ICU4Repository: SqliteRepository
     {
         public ICU4Repository(IUnitOfWork uow) : 
-            base(uow, config=>config.SetTableName("ICU4")
-                .AddCol("UniNUniIdame", DataType.TEXT_NOT_NUll_UNIQUE)
-                .AddCol("UniName", DataType.TEXT_NOT_NUll_UNIQUE)
-                .AddCol("Rank", DataType.TEXT_NUll)
-                .AddCol("Acronym", DataType.TEXT_NUll)
-                .AddCol("Founded", DataType.TEXT_NUll)
-                .AddCol("City", DataType.TEXT_NOT_NUll))
+            base(uow, config=>new UniCrawler(null,null).ConfigRepository(config.SetTableName("ICU4")
+                .AddCol("UniNUniIdame", DataType.TEXT_NOT_NUll_UNIQUE))
+                
+            )
         { }
 
 
-        public void InsertUni(object obj)
+        public void InsertUni(dynamic obj)
         {
             Insert(obj);
         }

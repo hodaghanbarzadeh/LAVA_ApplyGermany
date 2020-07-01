@@ -28,8 +28,26 @@ namespace ImportData.Console
                     uow.BeginTrans();
                     foreach (dynamic d in list)
                     {
-                        System.Console.WriteLine($"{d.UniId} - {d.UniName} - {d.City} - {d.Rank} - {d.Acronym} - {d.Founded}");
-                        //rep1.InsertUni(d);
+                        System.Console.WriteLine($@"{d.UniId} - {d.UniName} - {d.City} - {d.Rank} - {d.Acronym} - {d.Founded} 
+--------------------------------------------------------------
+- {d.Address} - {d.Tel} - {d.Fax} - {d.TuitionLclStdnB} - {d.TuitionIntStdnB} - {d.TuitionLclStdnM} - {d.TuitionIntStdnM}
+--------------------------------------------------------------
+- {d.Gender} - {d.InterNlStdn} - {d.SelectionType} - {d.StudentEnrollment} - {d.AcademicStaff} - {d.ControlType} 
+--------------------------------------------------------------
+- {d.EntityType} - {d.AcademicCalendar} - {d.CampusSetting} - {d.ReligiousAffiliation} - {d.Library} - {d.Housing} 
+--------------------------------------------------------------
+- {d.SportFacilities} - {d.FinancialAids} - {d.StudyAbroad} - {d.DistanceLearning}
+--------------------------------------------------------------
+- Graduate  - {d.GraduateB} - {d.GraduateM} - {d.GraduateP} - {d.ArtsHumanitiesB} - {d.ArtsHumanitiesM} - {d.ArtsHumanitiesP}
+--------------------------------------------------------------
+- Graduate  - {d.BusinessSocialB} - {d.BusinessSocialM} - {d.BusinessSocialP} - {d.LanguageCulturalB} - {d.LanguageCulturalM} - {d.LanguageCulturalP}
+--------------------------------------------------------------
+- Graduate  - {d.MedicineHealthB} - {d.MedicineHealthM} - {d.MedicineHealthP} - {d.EngineeringB} - {d.EngineeringM} - {d.EngineeringP}
+--------------------------------------------------------------
+- Graduate  - {d.ScienceTechnologyB} - {d.ScienceTechnologyM} - {d.ScienceTechnologyP}
+--------------------------------------------------------------
+==============================================================");
+                        rep1.InsertUni(d);
                     }
                     var s = "let cities=[\""+ string.Join("\",\"" ,((IEnumerable<dynamic>)list).Select(new Func<dynamic,string>( a=>a.City?.Replace(" ...",""))).Distinct());
                     

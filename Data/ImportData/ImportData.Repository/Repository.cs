@@ -39,9 +39,9 @@ namespace ImportData.Repository
         }
 
         private string insertScript;
-        protected virtual void Insert(object obj)
+        protected virtual void Insert(dynamic obj)
         {
-            Connection.Execute(insertScript ?? (insertScript = GenerateInsertScript()), obj,Transaction);
+            Connection.Execute(insertScript ?? (insertScript = GenerateInsertScript()),param: (object)obj,transaction: Transaction);
         }
 
         protected abstract string GenerateTableScript();
@@ -56,6 +56,12 @@ namespace ImportData.Repository
         public virtual IRepositoryConfig AddCol(string name, DataType Type)
         {
             Cols.Add(name, Type);
+            return this;
+        }
+        public virtual IRepositoryConfig TryAddCol(string name, DataType Type)
+        {
+            if(!Cols.ContainsKey(name))
+                AddCol(name, Type);
             return this;
         }
 

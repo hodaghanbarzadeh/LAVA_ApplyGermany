@@ -1,4 +1,5 @@
 ﻿using HtmlAgilityPack;
+using ImportData.Repository;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -25,8 +26,24 @@ namespace ImportData.Crawler
         }
         dynamic value = null;
         private readonly Action<IMemberConfig> config;
+        class MemberConfigForRep : IMemberConfig
+        {
+            private readonly IRepositoryConfig repConfig;
 
-
+            public MemberConfigForRep(IRepositoryConfig repConfig)
+            {
+                this.repConfig = repConfig;
+            }
+            public IMemberConfig AddPath(string name, Func<HtmlNode, WebCrawler> path)
+            {
+                repConfig.TryAddCol(name, DataType.TEXT_NUll);
+                return this;
+            }
+        }
+        public void ConfigRepository(IRepositoryConfig repConfig)
+        {
+            config(new MemberConfigForRep(repConfig));
+        }
 
         protected virtual HtmlNode GetNode(HtmlNode document)
         {
