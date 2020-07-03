@@ -28,6 +28,7 @@ namespace ImportData.Console
                     uow.BeginTrans();
                     foreach (dynamic d in list)
                     {
+
                         System.Console.WriteLine($@"{d.UniId} - {d.UniName} - {d.City} - {d.Rank} - {d.Acronym} - {d.Founded} 
 --------------------------------------------------------------
 - {d.Address} - {d.Tel} - {d.Fax} - {d.TuitionLclStdnB} - {d.TuitionIntStdnB} - {d.TuitionLclStdnM} - {d.TuitionIntStdnM}
