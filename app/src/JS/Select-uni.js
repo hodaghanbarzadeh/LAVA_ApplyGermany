@@ -78,9 +78,42 @@ $(() => {
     $('iframe').attr('src',`https://www.google.com/maps/embed/v1/search?q=University%20near%20${city}&key=AIzaSyB3DXYAQNSzN6rOrz6giPYssoYcqGa6xlg`);
   }
 
-
   // Initialize maps
   //google.maps.event.addDomListener(window, 'load', regular_map);
 
 
-})
+});
+function loadMapScenario() {
+  Microsoft.Maps.ConfigurableMap.createFromConfig(document.getElementById('map-container'), 'style/configmap2.json', false, null, successCallback, errorCallback);
+  function successCallback(mapObj) {
+    window.map=mapObj;    
+    setTimeout(()=>{
+      var bounds = Microsoft.Maps.LocationRect.fromLocations(new Microsoft.Maps.Location(47.15630905857346,15.408189134456976), 
+                                                             new Microsoft.Maps.Location(55.85630905857346, 5.653838560219752));
+      map.setOptions({
+          maxZoom: 12,
+          minZoom: 5,
+          maxBounds: bounds
+      });
+                                                          
+      map.setView({
+        mapTypeId: Microsoft.Maps.MapTypeId.road,
+        center: new Microsoft.Maps.Location(51.19254942903923,10.399044671663109),
+        zoom: 6
+      });
+      var boundsBorder = new Microsoft.Maps.Polyline([
+        new Microsoft.Maps.Location(55.85630905857346, 5.653838560219752),
+        new Microsoft.Maps.Location(47.15630905857346, 5.653838560219752),
+          new Microsoft.Maps.Location(47.15630905857346,15.408189134456976),
+          new Microsoft.Maps.Location(55.85630905857346,15.408189134456976),
+          new Microsoft.Maps.Location(55.85630905857346,5.653838560219752)
+      ], { strokeColor: 'red', strokeThickness: 5 });
+      map.entities.push(boundsBorder);
+    },200);
+    }
+    function errorCallback(message) {
+      document.getElementById('printoutPanel').innerHTML = message;
+  }
+  
+  
+}
