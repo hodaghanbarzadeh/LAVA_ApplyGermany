@@ -4171,7 +4171,7 @@
                 value: function() {
                     var e = this;
                     this.$autocompleteWrap.on("mousedown", "li", (function(i) {
-                        i.preventDefault(), e.$input.val(t(i.target).text()), e.$autocompleteWrap.empty()
+                        i.preventDefault(), e.inputBlur(), e.$input.val(t(i.target).text()), e.$autocompleteWrap.empty()
                     }))
                 }
             }, {
