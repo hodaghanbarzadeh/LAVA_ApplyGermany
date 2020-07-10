@@ -28,7 +28,7 @@
 
           <!-- Brand -->
           <a class="navbar-brand waves-effect" href="Index.html">
-            <strong class="blue-text">&nless; AG</strong>
+            <strong class="blue-text">&lt; AG</strong>
           </a>
 
           <!-- Collapse -->
@@ -99,8 +99,6 @@
                     <i class="fa fa-search"></i>
                   </button> -->
           </div>
-          <label for="DistanceRange">Distance</label>
-          <input type="range" class="custom-range" id="DistanceRange">
           <label for="">Sub Field</label>
           <div class="form-check">
             <input type="checkbox" class="form-check-input" id="itemid1">
@@ -143,7 +141,7 @@
             <div class="card">
 
               <!-- Card header -->
-              <div class="card-header">Google map</div>
+              <div class="card-header">Universities On Map - <button id="cityonMapSelect">Select : <span></span></button></div>
 
               <!--Card content-->
               <div class="card-body">
@@ -168,160 +166,45 @@
 
             <!--Card-->
             <div class="card mb-4">
-
+              <div class="card-header">Comparison List</div>
               <!--Card content-->
               <div class="card-body">
 
                 <!-- List group links -->
                 <div class="list-group list-group-flush">
-                  <a class="list-group-item list-group-item-action waves-effect">Sales
-                    <span class="badge badge-success badge-pill pull-right">22%
-                      <i class="fa fa-arrow-up ml-1"></i>
+                  <a class="list-group-item list-group-item-action waves-effect">
+                    <span id="cmplst0"></span>
+                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(0)">
+                      <i class="fa fa-window-close"></i>
                     </span>
                   </a>
-                  <a class="list-group-item list-group-item-action waves-effect">Traffic
-                    <span class="badge badge-danger badge-pill pull-right">5%
-                      <i class="fa fa-arrow-down ml-1"></i>
+                  <a class="list-group-item list-group-item-action waves-effect">
+                    <span id="cmplst1"></span>
+                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(1)">
+                      <i class="fa fa-window-close"></i>
                     </span>
                   </a>
-                  <a class="list-group-item list-group-item-action waves-effect">Orders
-                    <span class="badge badge-primary badge-pill pull-right">14</span>
+                  <a class="list-group-item list-group-item-action waves-effect">
+                    <span id="cmplst2"></span>
+                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(2)">
+                      <i class="fa fa-window-close"></i>
+                    </span>
                   </a>
-                  <a class="list-group-item list-group-item-action waves-effect">Issues
-                    <span class="badge badge-primary badge-pill pull-right">123</span>
+                  <a class="list-group-item list-group-item-action waves-effect">
+                    <span id="cmplst3"></span>
+                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(3)">
+                      <i class="fa fa-window-close"></i>
+                    </span>
                   </a>
-                  <a class="list-group-item list-group-item-action waves-effect">Messages
-                    <span class="badge badge-primary badge-pill pull-right">8</span>
+                  <a class="list-group-item list-group-item-action waves-effect">
+                    <span id="cmplst4"></span>
+                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(4)">
+                      <i class="fa fa-window-close"></i>
+                    </span>
                   </a>
                 </div>
                 <!-- List group links -->
-
-              </div>
-
-            </div>
-            <!--/.Card-->
-            <!--Card-->
-            <div class="card">
-
-              <!--Section: Modals-->
-              <section>
-
-                <!-- Frame Modal Top Info-->
-                <div class="modal fade top" id="frameModalTopInfoDemo" tabindex="-1" role="dialog"
-                  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-                  <div class="modal-dialog modal-frame modal-top modal-notify modal-info" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                      <!--Body-->
-                      <div class="modal-body">
-                        <div class="row d-flex justify-content-center align-items-center">
-
-                          <p class="pt-3 pr-2">Lorem ipsum dolor sit amet, consectetur
-                            adipisicing elit. Impedit nisi quo
-                            provident fugiat reprehenderit nostrum quos..</p>
-
-                          <a role="button" class="btn btn-info">Get it now
-                            <i class="fa fa-diamond ml-1"></i>
-                          </a>
-                          <a role="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No,
-                            thanks</a>
-                        </div>
-                      </div>
-                    </div>
-                    <!--/.Content-->
-                  </div>
-                </div>
-                <!-- Frame Modal Bottom Success-->
-
-
-                <!-- Full Height Modal Right Success Demo-->
-                <div class="modal fade right" id="fluidModalRightSuccessDemo" tabindex="-1" role="dialog"
-                  aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
-                  <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
-                    <!--Content-->
-                    <div class="modal-content">
-                      <!--Header-->
-                      <div class="modal-header">
-                        <p class="heading lead">Modal Success</p>
-
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true" class="white-text">&times;</span>
-                        </button>
-                      </div>
-
-                      <!--Body-->
-                      <div class="modal-body">
-                        <div class="text-center">
-                          <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
-                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit
-                            iusto nulla
-                            aperiam blanditiis ad consequatur in dolores culpa, dignissimos,
-                            eius
-                            non possimus fugiat. Esse ratione fuga, enim, ab officiis totam.
-                          </p>
-                        </div>
-                        <ul class="list-group z-depth-0">
-                          <li class="list-group-item justify-content-between">
-                            Cras justo odio
-                            <span class="badge badge-primary badge-pill">14</span>
-                          </li>
-                          <li class="list-group-item justify-content-between">
-                            Dapibus ac facilisis in
-                            <span class="badge badge-primary badge-pill">2</span>
-                          </li>
-                          <li class="list-group-item justify-content-between">
-                            Morbi leo risus
-                            <span class="badge badge-primary badge-pill">1</span>
-                          </li>
-                          <li class="list-group-item justify-content-between">
-                            Cras justo odio
-                            <span class="badge badge-primary badge-pill">14</span>
-                          </li>
-                          <li class="list-group-item justify-content-between">
-                            Dapibus ac facilisis in
-                            <span class="badge badge-primary badge-pill">2</span>
-                          </li>
-                          <li class="list-group-item justify-content-between">
-                            Morbi leo risus
-                            <span class="badge badge-primary badge-pill">1</span>
-                          </li>
-                        </ul>
-                      </div>
-
-                      <!--Footer-->
-                      <div class="modal-footer justify-content-center">
-                        <a role="button" class="btn btn-success">Get it now
-                          <i class="fa fa-diamond ml-1"></i>
-                        </a>
-                        <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No,
-                          thanks</a>
-                      </div>
-                    </div>
-                    <!--/.Content-->
-                  </div>
-                </div>
-                <!-- Full Height Modal Right Success Demo-->
-
-
-
-              </section>
-              <!--Section: Modals-->
-
-              <!-- Card header -->
-              <div class="card-header">Modals</div>
-
-              <!--Card content-->
-              <div class="card-body">
-
-
-
-
-                <a class="btn btn-primary btn-sm" data-toggle="modal" data-target="#frameModalTopInfoDemo"
-                  data-backdrop="false">Top</a>
-                <button type="button" class="btn btn-primary btn-sm" data-toggle="modal"
-                  data-target="#fluidModalRightSuccessDemo">Right</button>
-
-
+                <button id="btnCompare" type="button" class="btn btn-primary btn-sm" >Compare</button>
 
               </div>
 
@@ -365,6 +248,7 @@
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&sensor=false&key=AIzaSyAtjDhf8U-jwr0D_do8nJ8ZsQhFt1Xq-f4" defer></script> -->
   <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=As2u6Xlj4NfKZ2TggP-d86HJtXC0iyfl7mod06f4K6w1b1r8LXiIUoEGIwtQhV9A&callback=loadMapScenario' async defer></script>
+  <script src="js/data.js"></script>
   <script src="js/Select-uni.js"></script>
 </body>
 

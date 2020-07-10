@@ -17,3 +17,7 @@ height:100%;
 width:100%;
 position:absolute;
 }
+.MicrosoftMap .Infobox .infobox-actions
+{
+  height: 28px !important;
+}
