@@ -19821,17 +19821,8 @@ Array.prototype.sum=function(func)
     return sumValue;
 }
 
-Array.prototype.age=function(func)
+Array.prototype.avg=function(func)
 {
     return this.sum(func)/this.length;
 }
 
-uinpoint.filter(a=>!!a.dparts)
-        .map(a=>{
-            a.other=({
-                ...a.other, 
-                total_number_of_students:a.dparts.sum(b=>b.total_number_of_students), 
-                number_of_master_degree_students:a.dparts.sum(b=>b.number_of_master_degree_students)
-            });
-            return a;
-        });
