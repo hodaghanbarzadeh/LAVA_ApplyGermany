@@ -13,7 +13,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
     <!-- Material Design Bootstrap -->
     <link href="style/mdb.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.24/c3.css" />
     <link rel="stylesheet" href="style/radar-chart.css" />
     <link rel="stylesheet" href="style/Comparison.css" />
 </head>
@@ -168,10 +168,11 @@
                         <div class="card">
                             <!-- Card header -->
                             <div class="card-header text-center">
-                                Radar chart
+                                Total of Student
                             </div>
                             <!--Card content-->
-                            <div class="card-body" id="radarchart1">
+                            <div class="card-body">
+                                <div id="barchart1"></div>
                             </div>
 
                         </div>
@@ -217,6 +218,7 @@
         src='https://www.bing.com/api/maps/mapcontrol?key=As2u6Xlj4NfKZ2TggP-d86HJtXC0iyfl7mod06f4K6w1b1r8LXiIUoEGIwtQhV9A&callback=loadMapScenario'
         async defer></script>
     <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.24/c3.js"></script>
     <script src="js/radar-chart.js"></script>
     <script src="js/uinpoint.js"></script>
     <script src="js/notuse.js"></script>

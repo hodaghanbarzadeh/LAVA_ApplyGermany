@@ -19783,14 +19783,55 @@ dprtUnis.forEach(a=>{
         otherunis.push(a);
     }
 });
-
+otherunis.sort((a,b)=>(a.name<b.name?-1:(a.name>b.name?1:0)));
 let joinUni=[]
 unis.forEach(a=>{
     var name=a.UniName;
     
-    var b=otherunis.filter(d=>d.name==name)
+    var b=unis2.filter(d=>d.name==name)
     if(b.length>0){
-        a.other=b;
+        a.dparts=dprtUnis.filter(d=>d.name==name)
+        a.other1=b;
+        
         joinUni.push(a);
     }
 });
+uinpoint.forEach(a=>{
+    var name=a.uni.UniName;
+    
+    var b=unis2.filter(d=>d.name==name)
+    if(b.length>0){
+        a.dparts=dprtUnis.filter(d=>d.name==name)
+        a.other=b[0];
+        
+       
+    }
+});
+
+unis2.forEach(a=>a.UniName=a.name);
+
+Array.prototype.sum=function(func)
+{
+    if(!func)func=(a)=>a;
+    var sumValue=0;
+    this.forEach(a=>{
+        var v=Number.parseFloat(func(a)||0);    
+        sumValue=sumValue+(Number.isNaN(v)?0:v);
+    });
+    return sumValue;
+}
+
+Array.prototype.age=function(func)
+{
+    return this.sum(func)/this.length;
+}
+
+uinpoint.filter(a=>!!a.dparts)
+        .map(a=>{
+            a.other=({
+                ...a.other, 
+                total_number_of_students:a.dparts.sum(b=>b.total_number_of_students), 
+                number_of_master_degree_students:a.dparts.sum(b=>b.number_of_master_degree_students)
+            });
+            return a;
+        });

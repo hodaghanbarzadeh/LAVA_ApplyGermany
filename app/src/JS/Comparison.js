@@ -16,7 +16,7 @@ $(() => {
   });
   let i=0;
   let uninames=selectedUni.map(a=>a.uni.other[0].name);
-  let radarData =unis2.filter(a=>uninames.indexOf(a.name)>=0)
+  let radarData =selectedUni.map(a=>a.other)
   // .map(u=>({
   //   name:u.name,
   //   medicine_health_science: Number.parseFloat( u.medicine_health_science.replace('%',"")),
@@ -52,4 +52,25 @@ $(() => {
   cfg.h=400;
   $('#radarchart1').width(cfg.w+300);
   RadarChart.draw("#radarchart1", radarData,{...cfg,maxValue:100,levels: 5,factor:0.8,open:true});
+
+  var chart = c3.generate({
+    bindto: '#barchart1',
+    data: {
+        columns: [
+            ['Bachelor'].concat(selectedUni.map(a=>a.other.total_number_of_students)),
+            ['Master'].concat(selectedUni.map(a=>a.other.number_of_master_degree_students))
+        ],
+        type: 'bar',
+        groups: [
+            ['Bachelor', 'Master']
+        ]
+    },
+    axis: {
+      x: {
+        type: 'category',
+        categories: selectedUni.map(a=>a.uni.Acronym||a.uni.UniName )
+      }
+    }
+});
+
 });

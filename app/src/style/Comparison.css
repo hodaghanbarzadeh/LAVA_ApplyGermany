@@ -38,3 +38,7 @@ position:absolute;
 #radarchart1{
   margin: 0 auto;
 }
+#barchart1{
+  height: 400px;
+  padding-bottom: 100px;
+}

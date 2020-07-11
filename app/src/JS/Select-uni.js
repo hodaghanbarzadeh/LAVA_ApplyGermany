@@ -96,8 +96,8 @@ function FetchInfo(unistack) {
       if (r && r.length > 0) {
         var d=true;
         for (var i = 0; i < r.length; i++) {
-          if ((r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
-              (r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
+          if ((u.City & r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
+              (u.City & r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
             d=false;
             map.entities.remove(window.pins)
             createPin(r[i], u, pins,r);
