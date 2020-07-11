@@ -1,9 +1,6 @@
 $(() => {
   var var_mapoptions;
   var var_map;
-  let cities = ["Pinneberg", "Muenchen", "Nuernberg", "Berlin", "Alfter", "Freiburg im Breisgau", "Konstanz", "Hamburg", "Neuendettelsau", "Weimar", "Wuppertal", "Cottbus", "Halle", "Oldenburg", "Kiel", "Koeln", "Speyer", "Zwickau", "Gera", "Tuebingen", "Oestrich-Winkel", "Bochum", "Jena", "Greifswald", "Bruehl", "Flensburg", "Frankfurt an der Oder", "Darmstadt", "Dresden", "Ludwigsburg", "Aachen", "Bielefeld", "Paderborn", "Dortmund", "Erfurt", "Hannover", "Nordkirchen", "Bad Muenstereifel", "Potsdam", "Luebeck", "Muenster", "Iserlohn", "Wedel", "Heide", "Hagen", "Duesseldorf", "Essen", "Frankfurt am Main", "Giessen", "Erlangen", "Goettingen", "Heilbronn", "Hildesheim", "Leipzig", "Buxtehude", "Aalen", "Albstadt", "Koethen", "Ansbach", "Aschaffenburg", "Augsburg", "Biberach an der Riss", "Sankt Augustin", "Bremen", "Bremerhaven", "Coburg", "Saarbruecken", "Mannheim", "Hachenburg", "Stuttgart", "Bonn", "Emden", "Esslingen", "Idstein", "Fulda", "Wuerzburg", "Erding", "Braunschweig", "Bayreuth", "Edenkoben", "Rottenburg am Neckar", "Offenbach", "Schwaebisch Gmuend", "Heidelberg", "Regensburg", "Herford", "Ottersberg", "Detmold", "Karlsruhe", "Rostock", "Eberswalde", "Kehl", "Mayen", "Gelsenkirchen", "Schwetzingen", "Ludwigshafen", "Nuertingen", "Geisenheim", "Hamm", "Wernigerode", "Hof", "Kaiserslautern", "Kempten", "Koblenz", "Landshut", "Magdeburg", "Mainz", "Merseburg", "Mittweida", "Neubrandenburg", "Neu-Ulm", "Krefeld", "Nordhausen", "Offenburg", "Osnabrueck", "Pforzheim", "Weingarten", "Reutlingen", "Wiesbaden", "Kleve", "Rosenheim", "Muelheim an der Ruhr", "Schmalkalden", "Stralsund", "Trier", "Ulm", "Freising", "Hameln", "Wismar", "Worms", "Zittau", "Furtwangen", "Bad Honnef", "Wilhelmshaven", "Eichstaett", "Lueneburg", "Oberursel", "Neuruppin", "Elmshorn", "Isny im Allgaeu", "Amberg", "Wolfenbuettel", "Bamberg", "Marburg", "Vallendar", "Vechta", "Riedlingen", "Trossingen", "Brandenburg an der Havel", "Deggendorf", "Ingolstadt", "Lemgo", "Wildau", "Freiberg", "Chemnitz", "Clausthal-Zellerfeld", "Ilmenau", "Bingen", "Moeckern OT Friedensau", "Neubiberg", "Kassel", "Passau", "Siegen", "Witten", "Fuerth", "Friedrichshafen", ""];
-
-
   new WOW().init();
 
   $('#CityName').mdbAutocomplete({
@@ -22,7 +19,8 @@ $(() => {
 
 });
 function lookupUni(cityName, lan, fields) {
-  map.entities.clear()
+  map.entities.remove(window.cityPolygon)
+  map.entities.remove(window.pins)
   Microsoft.Maps.loadModule(['Microsoft.Maps.SpatialDataService', 'Microsoft.Maps.Search'], function () {
     var searchManager = new Microsoft.Maps.Search.SearchManager(map);
     var geocodeRequest = {
@@ -35,16 +33,18 @@ function lookupUni(cityName, lan, fields) {
             getAllPolygons: true
           };
           setTimeout(() => {
-            map.setView({ zoom: 9 });
+            map.setView({ zoom: 10 });
             setTimeout(() => {
               unisearch(cityName);
 
             }, 200);
           }, 200);
+          showCityOnBtn(cityName);
           //Use the GeoData API manager to get the boundary of New York City
           Microsoft.Maps.SpatialDataService.GeoDataAPIManager.getBoundary(geocodeResult.results[0].location, geoDataRequestOptions, map, function (data) {
             if (data.results && data.results.length > 0) {
-              map.entities.push(data.results[0].Polygons);
+              window.cityPolygon = (data.results[0].Polygons);
+              map.entities.push(cityPolygon);
             }
           }, null, function errCallback(networkStatus, statusMessage) {
             console.log(networkStatus);
@@ -59,123 +59,145 @@ function lookupUni(cityName, lan, fields) {
 }
 
 function unisearch(cityName) {
-  //   var sdsDataSourceUrl = 'https://spatial.virtualearth.net/REST/v1/data/f22876ec257b474b82fe2ffcb8393150/NavteqNA/NavteqPOIs';
 
-
-  //   Microsoft.Maps.loadModule('Microsoft.Maps.SpatialDataService', function () {
-  //     //Create a query to get nearby data.
-  //     queryOptions = {
-  //         queryUrl: sdsDataSourceUrl,
-  //         top: 11,
-  //         inlineCount: true,
-  //         spatialFilter: {
-  //             spatialFilterType: 'nearby',
-  //             location: map.getCenter(),
-  //             radius: 50
-  //         },
-  //         filter: new Microsoft.Maps.SpatialDataService.Filter('EntityTypeID','eq',5540) 
-  //       };
-  //     //Trigger an initial search.
-  //     getNearByLocations(queryOptions);
-  // });
-  // var searchManager = new Microsoft.Maps.Search.SearchManager(map);
-  // var requestOptions = {
-  //   bounds: map.getBounds(),
-  //   maxResults: 10,
-  //   where: 'Universität',
-  //   callback: function (r, userData) {
-  //     if (r && r.results && r.results.length > 0) {
-  //       var pin, pins = [], locs = [], output = 'Results:<br/>';
-  //       for (var i = 0; i < r.results.length; i++) {
-  //         //Create a pushpin for each result.
-  //         pin = new Microsoft.Maps.Pushpin(r.results[i].location, { text: i + '' });
-  //         pins.push(pin);
-  //         locs.push(r.results[i].location);
-  //       }
-  //       //Add the pins to the map
-  //       map.entities.push(pins);
-  //       //Display list of results
-  //       //Determine a bounding box to best view the results.
-
-  //     }
-  //   }
-  // };
-  // searchManager.geocode(requestOptions);
-  $.ajax({
-    url: 'https://nominatim.openstreetmap.org/search/University%20near%20'+cityName+'?format=json&addressdetails=1&limit=300',
-
-    dataType: 'json', // Notice! JSONP <-- P (lowercase)
-    success: function (r) {
-      if (r && r.length > 0) {
-        var pin, pins = [], locs = []
-        for (var i = 0; i < r.length; i++) {
-          //Create a pushpin for each result.
-          pin = new Microsoft.Maps.Pushpin(new Microsoft.Maps.Location(r[i].lat,r[i].lon), { text: i });
-          pins.push(pin);
-          locs.push(new Microsoft.Maps.Location(r[i].lat,r[i].lon));
-        }
-        //Add the pins to the map
-        map.entities.push(pins);
+  function createPin(r, uni, tpins) {
+    let i = tpins.length;
+    //Create a pushpin for each result.
+    let loc = new Microsoft.Maps.Location(r.lat, r.lon)
+    let pin = new Microsoft.Maps.Pushpin(loc, { text: uni.Acronym.length <= 7 ? uni.Acronym : i.toString() });
+    pin.metadata = {
+      uni: uni,
+      result: r
+    };
+    tpins.push(pin);
+    pin.setOptions({ enableHoverStyle: true, enableClickedStyle: false });
+    Microsoft.Maps.Events.addHandler(pin, 'click', function (args) {
+      if (infobox.pin == args.target) {
+        infobox.setOptions({ visible: !infobox.getVisible() });
       }
-    },
-    error: function () {
-      alert("Error");
-    }
-  });
+      else {
+        infobox.setOptions({
+          location: args.target.getLocation(),
+          title: args.target.metadata.uni.UniName,
+          description: "",
+          visible: true
+        });
+        infobox.pin = args.target;
+      }
+    });
+  }
 
 
-}
-function getNearByLocations(queryOptions) {
-  //Remove any existing data from the map.
-  map.entities.clear();
-  //Update the query options to skip results based on the page index.
-  Microsoft.Maps.SpatialDataService.QueryAPIManager.search(queryOptions, map, function (data, inlineCount) {
-    //Store the number of results available.
-    numResults = inlineCount;
-    if (data.length > 0) {
-      //Calculate the start and end result index.
-      //Add results to the map.
-      map.entities.push(data);
-      //Set the map view to show all the locations.
-      //Add apadding to account for the pushpins pixel size.
-      map.setView({
-        bounds: Microsoft.Maps.LocationRect.fromLocations(locations),
-        padding: 30
-      });
+  window.pins = []
+  let uniselected = []
+  unis.forEach(uni => {
+    if (uni.City == cityName) {
+      uniselected.push(uni)
     }
   });
-}
-function listItemClicked(entityId) {
-  //When an item in the list is clicked, look up its pushpin by entitiyId.
-  var shape, len = map.entities.getLength();
-  for (var i = 0; i < len; i++) {
-    shape = map.entities.get(i);
-    if (shape.entity.EntityID == entityId) {
-      //Center the map over the pushpin and zoom in.
-      map.setView({ center: shape.getLocation(), zoom: 15 });
-      break;
-    }
+  FetchInfo(uniselected);
+  function FetchInfo(unistack) {
+    let u = unistack.pop();
+    if (!u) return;
+    $.ajax({
+      url: 'https://nominatim.openstreetmap.org/search.php?q=' + u.UniName.replace(/ /g, "+") + '&format=json&addressdetails=1&limit=50&accept-language=de',
+
+      dataType: 'json', // Notice! JSONP <-- P (lowercase)
+      success: function (r) {
+        if (r && r.length > 0) {
+
+          for (var i = 0; i < r.length; i++) {
+            if (r[i].address.city.toLowerCase() == cityName.toLowerCase()) {
+              map.entities.remove(window.pins)
+              createPin(r[i], u, pins);
+              map.entities.push(pins);
+              break;
+            }
+          }
+
+          //Add the pins to the map
+
+        }
+        FetchInfo(unistack)
+      },
+      error: function (e, b, c) {
+        FetchInfo(unistack)
+      }
+    });
   }
 }
-function pageBackwards() {
-  if (pageIdx > 0) {
-    pageIdx--;
-    getNearByLocations();
+
+function updateuilist() {
+  let btn=$('#btnCompare');
+  btn.attr('disabled','disabled');
+  for (var i = 0; i < 5; i++) {
+    $('#cmplst'+i.toString()).text("").parent().addClass("d-none");
+  }
+  for (var i = 0; i < Comparisonlist.length; i++) {
+    let item=Comparisonlist[i];
+    $('#cmplst'+i.toString()).text(item.uni.UniName).parent().removeClass("d-none");
+    btn.attr('disabled',null);
   }
 }
-function pageForward() {
-  //Ensure that paging does not exceed the number of results.
-  if ((pageIdx + 1) * 10 < numResults) {
-    pageIdx++;
-    getNearByLocations();
-  }
-}
+
 
 
 function loadMapScenario() {
+let cityonMapSelect=$('#cityonMapSelect');
+cityonMapSelect.click(e=>{
+$('#CityName').val(cityonMapSelect.find('span').text()).change()
+});
+  window.showCityOnBtn=function(cityName)
+  {
+    cityonMapSelect.find('span').text(cityName);
+  }
+
   Microsoft.Maps.ConfigurableMap.createFromConfig(document.getElementById('map-container'), 'style/configmap2.json', false, null, successCallback, errorCallback);
   function successCallback(mapObj) {
     window.map = mapObj;
+    Microsoft.Maps.Events.addHandler(map, 'click', function (e) { 
+      $.ajax({
+        url: 'https://nominatim.openstreetmap.org/reverse?lat='+e.location.latitude+'&lon='+e.location.longitude+'&zoom=18&format=json&addressdetails=1&accept-language=de',
+  
+        dataType: 'json', // Notice! JSONP <-- P (lowercase)
+        success: function (r) {
+          if (r && r.address && r.address.city) {
+  
+            showCityOnBtn(r.address.city);
+  
+  
+          }
+        },
+        error: function (e, b, c) {
+        }
+      });
+     });
+    window.infobox = new Microsoft.Maps.Infobox(mapObj.getCenter(), {
+      visible: false, autoAlignment: true, actions: [
+        {
+          label: 'Add To Comparison', eventHandler: function (e) {
+            AddToComparisonlist(infobox.pin.metadata);
+          }
+        }
+      ]
+    });
+    window.infobox.setMap(mapObj);
+    window.pins = [];
+    window.Comparisonlist = [];
+    window.AddToComparisonlist = function (m) {
+      if (Comparisonlist.filter(item => item.uni == m.uni).length > 0)
+        return;
+      Comparisonlist.push({ uni: m.uni, result: m.result });
+      if (Comparisonlist.length > 5)
+        Comparisonlist.shift();
+      updateuilist();
+    }
+    window.removeToComparisonlist = function (i) {
+      if (i < Comparisonlist.length)
+        Comparisonlist.splice(i, 1);
+      updateuilist();
+    }
+    updateuilist()
     setTimeout(() => {
       var bounds = Microsoft.Maps.LocationRect.fromLocations(new Microsoft.Maps.Location(47.15630905857346, 15.408189134456976),
         new Microsoft.Maps.Location(55.85630905857346, 5.653838560219752));
@@ -197,8 +219,10 @@ function loadMapScenario() {
         new Microsoft.Maps.Location(55.85630905857346, 15.408189134456976),
         new Microsoft.Maps.Location(55.85630905857346, 5.653838560219752)
       ], { strokeColor: 'red', strokeThickness: 5 });
+      map.entities.push(boundsBorder);
+      map.entities.push(pins);
+      map.entities.push(cityPolygon = {});
     }, 200);
-    map.entities.push(boundsBorder);
   }
   function errorCallback(message) {
     document.getElementById('printoutPanel').innerHTML = message;
