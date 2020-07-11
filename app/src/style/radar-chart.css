@@ -11,9 +11,7 @@
     font-family: sans-serif;
     font-size: 10px;
   }
-  .radar-chart .axis .legend.top {
-    dy:1em;
-  }
+
   .radar-chart .axis .legend.left {
     text-anchor: start;
   }

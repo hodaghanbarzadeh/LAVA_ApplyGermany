@@ -96,8 +96,8 @@ function FetchInfo(unistack) {
       if (r && r.length > 0) {
         var d=true;
         for (var i = 0; i < r.length; i++) {
-          if ((u.City & r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
-              (u.City & r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
+          if ((!!u.City & !!r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
+              (!!u.City & !!r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
             d=false;
             map.entities.remove(window.pins)
             createPin(r[i], u, pins,r);
@@ -149,6 +149,10 @@ function updateuilist() {
 
 
 function loadMapScenario() {
+  $('#btnaddcomparison').click((e)=>{
+    $('#UniInfoModal').modal('hide');
+    AddToComparisonlist($(e.target).data('uni'));
+  });
   $('#btnCompare').click(()=>{
     let ids=Comparisonlist[0].uni.UniId;
     for(let i=1;i<Comparisonlist.length;i++)
@@ -188,8 +192,11 @@ function loadMapScenario() {
     window.infobox = new Microsoft.Maps.Infobox(mapObj.getCenter(), {
       visible: false, autoAlignment: true, actions: [
         {
-          label: 'Add To Comparison', eventHandler: function (e) {
-            AddToComparisonlist(infobox.pin.metadata);
+          label: 'Read more', eventHandler: function (e) {
+            var modal=$('#UniInfoModal').modal('show');
+            modal.find('.heading.lead').text(infobox.pin.metadata.uni.UniName);
+            $('#btnaddcomparison').data('uni',infobox.pin.metadata);
+            //AddToComparisonlist(infobox.pin.metadata);
           }
         }
       ]

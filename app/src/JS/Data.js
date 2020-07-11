@@ -19810,19 +19810,5 @@ uinpoint.forEach(a=>{
 
 unis2.forEach(a=>a.UniName=a.name);
 
-Array.prototype.sum=function(func)
-{
-    if(!func)func=(a)=>a;
-    var sumValue=0;
-    this.forEach(a=>{
-        var v=Number.parseFloat(func(a)||0);    
-        sumValue=sumValue+(Number.isNaN(v)?0:v);
-    });
-    return sumValue;
-}
 
-Array.prototype.avg=function(func)
-{
-    return this.sum(func)/this.length;
-}
 

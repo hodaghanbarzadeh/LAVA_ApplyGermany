@@ -97,7 +97,12 @@
                         <div class="card">
 
                             <!-- Card header -->
-                            <div class="card-header">Universities </div>
+                            <div class="card-header d-sm-flex justify-content-between">
+                                <div>Universities</div> 
+                                <div>
+                                    <button id="toggleModal" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modalapply">Confirm & Apply</button> 
+                                </div>
+                            </div>
 
                             <!--Card content-->
                             <div class="card-body">
@@ -108,6 +113,9 @@
                                     <thead class="blue-grey lighten-4">
                                         <tr>
                                             <th>#</th>
+                                            <th><input type="checkbox" checked="checked" class="form-check-input"
+                                                    id="slctAll"><label class="form-check-label" for="slctAll"></label>
+                                            </th>
                                             <th>Name</th>
                                             <th>City</th>
                                             <th>Other cell</th>
@@ -135,7 +143,7 @@
 
                 </div>
                 <!--Grid row-->
-                
+
                 <!--Grid row-->
                 <div class="row wow fadeIn">
 
@@ -150,9 +158,9 @@
                                 Radar chart
                             </div>
                             <!--Card content-->
-                            <div class="card-body" >
+                            <div class="card-body">
                                 <div id="radarchart1">
-                                    
+
                                 </div>
                             </div>
 
@@ -184,7 +192,6 @@
 
                 </div>
                 <!--Grid row-->
-                
                 <!--Grid row-->
                 <div class="row wow fadeIn">
 
@@ -199,7 +206,7 @@
                                 Line chart
                             </div>
                             <!--Card content-->
-                            <div class="card-body" >
+                            <div class="card-body">
                                 <div id="linechart1"></div>
                             </div>
 
@@ -211,6 +218,84 @@
 
                 </div>
                 <!--Grid row-->
+                <section>
+
+                    <!--Modal: Login / Register Form Demo-->
+                    <div class="modal fade" id="modalapply" tabindex="-1" role="dialog"
+                        aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Apply by us</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                                                    <!-- Form -->
+                                <form name="" action="select-uni.html" method="GET">
+                                    <div class="md-form">
+                                        <i class="fas fa-user prefix grey-text"></i>
+                                        <input type="text" id="form3" class="form-control">
+                                        <label for="form3">Your name</label>
+                                    </div>
+                                    <div class="md-form">
+                                        <i class="fas fa-envelope prefix grey-text"></i>
+                                        <input type="text" id="form2" class="form-control">
+                                        <label for="form2">Your email</label>
+                                    </div>
+                                    <div class="select-wrapper mdb-select md-form">
+                                        <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                        <select name="casestudy" id="casestudy" class="mdb-select md-form" data-stop-refresh="true">
+                                            <option value="" disabled=""  selected="">Choose your Field of Study
+                                            </option>
+                                            <option value="1">History</option>
+                                            <option value="2">Linguistics and languages</option>
+                                            <option value="3">Philosophy</option>
+                                            <option value="4">Religion</option>
+                                            <option value="5">The arts</option>
+                                            <option value="6">Literature</option>
+                                            <option value="7">Performing arts</option>
+                                            <option value="8">Economics</option>
+                                            <option value="9">Geography</option>
+                                            <option value="10">Political science</option>
+                                            <option value="11">Psychology</option>
+                                            <option value="12">Biology</option>
+                                            <option value="13">Chemistry</option>
+                                            <option value="14">Physics</option>
+                                            <option value="15">Computer sciences</option>
+                                            <option value="16">Architecture and design</option>
+                                            <option value="17">Law</option>
+                                            <option value="18">Medicine</option>
+                                        </select>
+                                        <label for="form8">Field of Study</label>
+                                    </div>
+
+                                    <div class="select-wrapper mdb-select md-form">
+                                        <i class="fas fa-pencil-alt prefix grey-text"></i>
+                                        <select name="degree" id="degree" class="mdb-select md-form" data-stop-refresh="true">
+                                            <option value="" disabled=""  selected="">Choose your Degree
+                                            </option>
+                                            <option value="1">Bachlor</option>
+                                            <option value="2">Master</option>
+                                            <option value="3">PhD</option>
+                                        </select>
+                                        <label for="form8">Degree</label>
+                                    </div>
+
+                                </form>
+                                <!-- Form -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Apply</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal: Login / Register Form Demo-->
+                </section>
+
             </div>
         </main>
         <!--Main layout-->
@@ -238,7 +323,7 @@
     <script type="text/javascript"
         src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.js"></script>
     <!-- MDB core JavaScript -->
-    <script type="text/javascript" src="js/mdb.js"></script>
+
 
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&sensor=false&key=AIzaSyAtjDhf8U-jwr0D_do8nJ8ZsQhFt1Xq-f4" defer></script> -->
@@ -247,6 +332,9 @@
         async defer></script>
     <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.24/c3.js"></script>
+    <script type="text/javascript" src="js/mdb.js"></script>
+    <script type="text/javascript" src="js/selectMaterial.js"></script>
+
     <script src="js/radar-chart.js"></script>
     <script src="js/uinpoint.js"></script>
     <script src="js/notuse.js"></script>

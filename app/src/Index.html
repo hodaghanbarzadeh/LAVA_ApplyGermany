@@ -24,7 +24,7 @@
 
             <!-- Brand -->
             <a class="navbar-brand" href="#">
-                <img src="style/Logo.png" width= "80" height= "20">
+                <img src="style/Logo.png" width="80" height="20">
                 <!--<strong>AG</strong> -->
             </a>
 
@@ -83,7 +83,7 @@
 
     <!-- Full Page Intro -->
     <div id="home" class="view full-page-intro"
-    style="background-image: url('style/Uni_Duisburg.jpg'); background-repeat: no-repeat; background-size: cover;">
+        style="background-image: url('style/Uni_Duisburg.jpg'); background-repeat: no-repeat; background-size: cover;">
         <!-- Mask & flexbox options-->
         <div class="mask rgba-black-light d-flex justify-content-center align-items-center">
 
@@ -105,8 +105,10 @@
                         </p>
 
                         <p class="mb-4 d-none d-md-block">
-                            Germany is highly popular among international students. This is mainly because of the country's many excellent universities, its dynamic student life and good funding options.
-                                If you have decided to come to Germany, our platform can help you to choose a proper university through visual comparisons.
+                            Germany is highly popular among international students. This is mainly because of the
+                            country's many excellent universities, its dynamic student life and good funding options.
+                            If you have decided to come to Germany, our platform can help you to choose a proper
+                            university through visual comparisons.
                         </p>
 
                         <a href="#Guid" class="btn btn-indigo btn-lg">Learn more
@@ -145,8 +147,8 @@
                                     </div>
                                     <div class="select-wrapper mdb-select md-form">
                                         <i class="fas fa-pencil-alt prefix grey-text"></i>
-                                        <select name="" class="mdb-select md-form" data-stop-refresh="true">
-                                            <option value="" disabled=""  selected="">Choose your Field of Study
+                                        <select name="casestudy" id="casestudy" class="mdb-select md-form" data-stop-refresh="true">
+                                            <option value="" disabled="" selected="">Choose your Field of Study
                                             </option>
                                             <option value="1">History</option>
                                             <option value="2">Linguistics and languages</option>
@@ -172,8 +174,8 @@
 
                                     <div class="select-wrapper mdb-select md-form">
                                         <i class="fas fa-pencil-alt prefix grey-text"></i>
-                                        <select name="" class="mdb-select md-form" data-stop-refresh="true">
-                                            <option value="" disabled=""  selected="">Choose your Degree
+                                        <select name="degree" id="degree" class="mdb-select md-form" data-stop-refresh="true">
+                                            <option value="" disabled="" selected="">Choose your Degree
                                             </option>
                                             <option value="1">Bachlor</option>
                                             <option value="2">Master</option>
@@ -182,11 +184,12 @@
                                         <label for="form8">Degree</label>
                                     </div>
 
-                                    <div class="text-center">
-                                        <button class="btn btn-indigo">Find Uni</button>
-                                    </div>
+                                   
 
-                                </form>
+                                </form> 
+                                <div class="text-center">
+                                    <button type="button" id="btnfind" class="btn btn-indigo">Find Uni</button>
+                                </div>
                                 <!-- Form -->
 
                             </div>
@@ -228,7 +231,7 @@
                     </div>
 
 
-                    
+
                     <!--Grid column-->
 
                     <!--Grid column-->
@@ -276,7 +279,8 @@
                             </div>
                             <div class="col-10">
                                 <h5 class="feature-title">Aim </h5>
-                                <p class="grey-text">we make it easy to apply through detailed charts and comparisons</p>
+                                <p class="grey-text">we make it easy to apply through detailed charts and comparisons
+                                </p>
                             </div>
                         </div>
                         <!--/First row-->
@@ -306,7 +310,8 @@
                             </div>
                             <div class="col-10">
                                 <h5 class="feature-title">Team</h5>
-                                <p class="grey-text">We, Parastoo and Hoda, are master of Computer Engineering students and design 
+                                <p class="grey-text">We, Parastoo and Hoda, are master of Computer Engineering students
+                                    and design
                                     this platform for the LAVA LAB as our Master Project.</p>
                             </div>
                         </div>
@@ -314,16 +319,16 @@
 
                     </div>
                     <!--/Grid column-->
-  <!--Grid column-->
-  <div class="col-lg-6 col-md-12">
+                    <!--Grid column-->
+                    <div class="col-lg-6 col-md-12">
 
-    <p class="h5 text-center mb-4">How To Study In Germany For FREE!</p>
-    <div class="embed-responsive embed-responsive-16by9">
-        <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lerztFb2u0E"
-            allowfullscreen></iframe>
-    </div>
-</div>
-<!--/Grid column-->
+                        <p class="h5 text-center mb-4">How To Study In Germany For FREE!</p>
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/lerztFb2u0E"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <!--/Grid column-->
 
                 </div>
                 <!--/Grid row-->
@@ -559,7 +564,14 @@
                 $(".mr-auto .nav-item.active").removeClass("active");
                 $(selectItem).parent().addClass("active");
             })
-
+            $('#btnfind').click((e) => {
+                e.preventDefault();
+                sessionStorage.setItem('name', $('#form3').val());
+                sessionStorage.setItem('email', $('#form2').val());
+                sessionStorage.setItem('casestudy', $('#casestudy').val());
+                sessionStorage.setItem('degree', $('#degree').val());
+                $('form').submit();
+            });
         })
     </script>
 </body>

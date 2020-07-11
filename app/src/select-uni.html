@@ -80,7 +80,7 @@
       <div class="sidebar-fixed position-fixed">
 
         <a class="logo-wrapper waves-effect">
-          <img src="style/logo1.png" class="img-fluid" alt="" width="250" height="200">
+          <img src="style/logo.png" class="img-fluid" alt="" width="250" height="200">
         </a>
 
         <div class="list-group list-group-flush">
@@ -99,140 +99,181 @@
                     <i class="fa fa-search"></i>
                   </button> -->
           </div>
-          <label for="">Sub Field</label>
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="itemid1">
-            <label class="form-check-label" for="itemid1">Item1</label><br />
-            <input type="checkbox" class="form-check-input" id="itemid2">
-            <label class="form-check-label" for="itemid2">Item2</label><br />
-            <input type="checkbox" class="form-check-input" id="itemid3">
-            <label class="form-check-label" for="itemid3">Item3</label><br />
-            <input type="checkbox" class="form-check-input" id="itemid4">
-            <label class="form-check-label" for="itemid4">Item4</label>
+          <label for="">Comparison List</label>
+          <!-- List group links -->
+          <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action waves-effect">
+              <span id="cmplst0"></span>
+              <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(0)">
+                <i class="fa fa-window-close"></i>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action waves-effect">
+              <span id="cmplst1"></span>
+              <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(1)">
+                <i class="fa fa-window-close"></i>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action waves-effect">
+              <span id="cmplst2"></span>
+              <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(2)">
+                <i class="fa fa-window-close"></i>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action waves-effect">
+              <span id="cmplst3"></span>
+              <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(3)">
+                <i class="fa fa-window-close"></i>
+              </span>
+            </a>
+            <a class="list-group-item list-group-item-action waves-effect">
+              <span id="cmplst4"></span>
+              <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(4)">
+                <i class="fa fa-window-close"></i>
+              </span>
+            </a>
           </div>
-          <label for="">Language</label>
-          <div class="form-check">
-            <input type="radio" name="langs" class="form-check-input" id="item2id1">
-            <label class="form-check-label" for="item2id1">Enlish</label><br />
-            <input type="radio" name="langs" class="form-check-input" id="item2id2">
-            <label class="form-check-label" for="item2id2">German</label><br />
-            <input type="radio" name="langs" class="form-check-input" id="item2id3">
-            <label class="form-check-label" for="item2id3">Both</label><br />
+          <!-- List group links -->
+          <button id="btnCompare" type="button" class="btn btn-primary btn-sm">Compare</button>
+
+        </div>
+      </div>
+
+  </div>
+  <!-- Sidebar -->
+
+  </header>
+  <!--Main Navigation-->
+
+  <!--Main layout-->
+  <main class="pt-3 mx-lg-5">
+    <div class="container-fluid mt-5">
+      <section>
+        <!-- Full Height Modal Right Success Demo-->
+        <div class="modal fade right" id="UniInfoModal" tabindex="-1" role="dialog"
+          aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="false">
+          <div class="modal-dialog modal-full-height modal-right modal-notify modal-success" role="document">
+            <!--Content-->
+            <div class="modal-content">
+              <!--Header-->
+              <div class="modal-header">
+                <p class="heading lead">Modal Success</p>
+
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+              </div>
+
+              <!--Body-->
+              <div class="modal-body">
+                <div class="text-center">
+                  <i class="fa fa-check fa-4x mb-3 animated rotateIn"></i>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit
+                    iusto nulla
+                    aperiam blanditiis ad consequatur in dolores culpa, dignissimos,
+                    eius
+                    non possimus fugiat. Esse ratione fuga, enim, ab officiis totam.
+                  </p>
+                </div>
+                <ul class="list-group z-depth-0">
+                  <li class="list-group-item justify-content-between">
+                    Cras justo odio
+                    <span class="badge badge-primary badge-pill">14</span>
+                  </li>
+                  <li class="list-group-item justify-content-between">
+                    Dapibus ac facilisis in
+                    <span class="badge badge-primary badge-pill">2</span>
+                  </li>
+                  <li class="list-group-item justify-content-between">
+                    Morbi leo risus
+                    <span class="badge badge-primary badge-pill">1</span>
+                  </li>
+                  <li class="list-group-item justify-content-between">
+                    Cras justo odio
+                    <span class="badge badge-primary badge-pill">14</span>
+                  </li>
+                  <li class="list-group-item justify-content-between">
+                    Dapibus ac facilisis in
+                    <span class="badge badge-primary badge-pill">2</span>
+                  </li>
+                  <li class="list-group-item justify-content-between">
+                    Morbi leo risus
+                    <span class="badge badge-primary badge-pill">1</span>
+                  </li>
+                </ul>
+              </div>
+
+              <!--Footer-->
+              <div class="modal-footer justify-content-center">
+                <a role="button" id="btnaddcomparison" class="btn btn-success">Add to Comparison List
+                  <i class="fa fa-diamond ml-1"></i>
+                </a>
+                <a role="button" class="btn btn-outline-success waves-effect" data-dismiss="modal">No,
+                  thanks</a>
+              </div>
+            </div>
+            <!--/.Content-->
           </div>
         </div>
+        <!-- Full Height Modal Right Success Demo-->
+      </section>
+      <!--Grid row-->
+      <div class="row wow fadeIn">
 
-      </div>
-      <!-- Sidebar -->
+        <!--Grid column-->
+        <div class="col-md-10 mb-4">
 
-    </header>
-    <!--Main Navigation-->
+          <!--Card-->
+          <div class="card">
 
-    <!--Main layout-->
-    <main class="pt-3 mx-lg-5">
-      <div class="container-fluid mt-5">
+            <!-- Card header -->
+            <div class="card-header d-sm-flex justify-content-between">
+              <div>Universities On Map</div>
+              <div>
+                <button id="cityonMapSelect" type="button" class="btn btn-primary btn-sm">Select :
+                  <span></span></button>
+              </div>
+            </div>
+            <!--Card content-->
+            <div class="card-body">
 
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-
-          <!--Grid column-->
-          <div class="col-md-9 mb-4">
-
-            <!--Card-->
-            <div class="card">
-
-              <!-- Card header -->
-              <div class="card-header">Universities On Map - <button id="cityonMapSelect">Select : <span></span></button></div>
-
-              <!--Card content-->
-              <div class="card-body">
-
-                <!--Google map-->
-                <div id="map-container" class="map-container" style="height: 500px">
-                  <!-- <iframe src="https://www.google.com/maps/embed/v1/place?q=Essen&key=AIzaSyB3DXYAQNSzN6rOrz6giPYssoYcqGa6xlg"
+              <!--Google map-->
+              <div id="map-container" class="map-container" style="height: 500px">
+                <!-- <iframe src="https://www.google.com/maps/embed/v1/place?q=Essen&key=AIzaSyB3DXYAQNSzN6rOrz6giPYssoYcqGa6xlg"
                     frameborder="0" style="border:0" allowfullscreen></iframe> -->
-                </div>
-
               </div>
 
             </div>
-            <!--/.Card-->
-
 
           </div>
-          <!--Grid column-->
+          <!--/.Card-->
 
-          <!--Grid column-->
-          <div class="col-md-3 mb-4">
-
-            <!--Card-->
-            <div class="card mb-4">
-              <div class="card-header">Comparison List</div>
-              <!--Card content-->
-              <div class="card-body">
-
-                <!-- List group links -->
-                <div class="list-group list-group-flush">
-                  <a class="list-group-item list-group-item-action waves-effect">
-                    <span id="cmplst0"></span>
-                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(0)">
-                      <i class="fa fa-window-close"></i>
-                    </span>
-                  </a>
-                  <a class="list-group-item list-group-item-action waves-effect">
-                    <span id="cmplst1"></span>
-                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(1)">
-                      <i class="fa fa-window-close"></i>
-                    </span>
-                  </a>
-                  <a class="list-group-item list-group-item-action waves-effect">
-                    <span id="cmplst2"></span>
-                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(2)">
-                      <i class="fa fa-window-close"></i>
-                    </span>
-                  </a>
-                  <a class="list-group-item list-group-item-action waves-effect">
-                    <span id="cmplst3"></span>
-                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(3)">
-                      <i class="fa fa-window-close"></i>
-                    </span>
-                  </a>
-                  <a class="list-group-item list-group-item-action waves-effect">
-                    <span id="cmplst4"></span>
-                    <span class="badge badge-danger badge-pill pull-right" onclick="removeToComparisonlist(4)">
-                      <i class="fa fa-window-close"></i>
-                    </span>
-                  </a>
-                </div>
-                <!-- List group links -->
-                <button id="btnCompare" type="button" class="btn btn-primary btn-sm" >Compare</button>
-
-              </div>
-
-            </div>
-            <!--/.Card-->
-          </div>
-          <!--Grid column-->
 
         </div>
-        <!--Grid row-->
+        <!--Grid column-->
+
+
 
       </div>
-    </main>
-    <!--Main layout-->
+      <!--Grid row-->
 
-    <!--Footer-->
-    <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+    </div>
+  </main>
+  <!--Main layout-->
+
+  <!--Footer-->
+  <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
 
 
-      <!--Copyright-->
-      <div class="footer-copyright py-3">
-        © 2020 Copyright:
-        <a href="http://Due-Uni.de" target="_blank"> AG - LAVA - Due-Uni.de </a>
-      </div>
-      <!--/.Copyright-->
+    <!--Copyright-->
+    <div class="footer-copyright py-3">
+      © 2020 Copyright:
+      <a href="http://Due-Uni.de" target="_blank"> AG - LAVA - Due-Uni.de </a>
+    </div>
+    <!--/.Copyright-->
 
-    </footer>
-    <!--/.Footer-->
+  </footer>
+  <!--/.Footer-->
   </div>
 
   <!-- JQuery -->
@@ -247,7 +288,11 @@
 
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&sensor=false&key=AIzaSyAtjDhf8U-jwr0D_do8nJ8ZsQhFt1Xq-f4" defer></script> -->
-  <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?key=As2u6Xlj4NfKZ2TggP-d86HJtXC0iyfl7mod06f4K6w1b1r8LXiIUoEGIwtQhV9A&callback=loadMapScenario' async defer></script>
+  <script type='text/javascript'
+    src='https://www.bing.com/api/maps/mapcontrol?key=As2u6Xlj4NfKZ2TggP-d86HJtXC0iyfl7mod06f4K6w1b1r8LXiIUoEGIwtQhV9A&callback=loadMapScenario'
+    async defer></script>
+  <script src="js/uinpoint.js"></script>
+  <script src="js/notuse.js"></script>
   <script src="js/data.js"></script>
   <script src="js/Select-uni.js"></script>
 </body>

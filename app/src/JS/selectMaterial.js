@@ -16,7 +16,7 @@
             var lis = [];
             var options = $('option', select1).each((i, e) => {
                 e = $(e)
-                lis.push($(`<li role="option"><span class="filtrable ">${e.text()}</span></li>`)
+                lis.push($(`<li role="option" value="${e.val()}"><span class="filtrable ">${e.text()}</span></li>`)
                     .appendTo(ul1)
                     .addClass(
                         (e[0].selected ? "active selected" : "")
@@ -51,11 +51,24 @@
                 e.parent().addClass("selected");
                 e.parent().addClass("active");
                 input1.val(e.text());
+                select1.val(e.parent().val());
             });
             input1.blur((e) => {
                 intervalBlur=setTimeout(ul1.hide.bind(ul1), 200);
             });
-
+            select1.change(e=>{
+                lis.each((i,a)=>{
+                    i=$(a);
+                    if(i.val()==select1.val())
+                    {
+                        lis.removeClass("selected");
+                        lis.removeClass("active");
+                        i.addClass("selected");
+                        i.addClass("active");
+                        input1.val(i.text());
+                    }
+                })
+            });
         });
     };
 
