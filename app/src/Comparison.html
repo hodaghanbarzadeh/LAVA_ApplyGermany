@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="style/mdb.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style/radar-chart.css" />
+    <link rel="stylesheet" href="style/Comparison.css" />
+</head>
+
+<body>
+    <div class="container-for-admin">
+        <!--Main Navigation-->
+        <header>
+
+            <!-- Navbar -->
+            <nav class="navbar fixed-top navbar-expand-lg navbar-light white top-nav-collapse">
+                <div class="container-fluid">
+
+                    <!-- Brand -->
+                    <a class="navbar-brand waves-effect" href="Index.html">
+                        <strong class="blue-text">&lt; AG</strong>
+                    </a>
+
+                    <!-- Collapse -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <!-- Links -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                        <!-- Left -->
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect" href="Index.html#aboutus">About us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link waves-effect" href="Index.html#Guid">Tutorials</a>
+                            </li>
+                        </ul>
+
+                        <!-- Right -->
+                        <ul class="navbar-nav nav-flex-icons">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link waves-effect" target="_blank">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="#" class="nav-link waves-effect" target="_blank">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/hodaghanbarzadeh/LAVA_ApplyGermany"
+                                    class="nav-link border border-light rounded waves-effect" target="_blank">
+                                    <i class="fab fa-github mr-2"></i>AG GitHub
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </nav>
+            <!-- Navbar -->
+
+
+
+        </header>
+        <!--Main Navigation-->
+
+        <!--Main layout-->
+        <main class="pt-3 mx-lg-5">
+            <div class="container-fluid mt-5">
+
+                <!--Grid row-->
+                <div class="row wow fadeIn">
+
+                    <!--Grid column-->
+                    <div class="col-md-12 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!-- Card header -->
+                            <div class="card-header">Universities </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+
+                                <!-- Table  -->
+                                <table id="tbluni" class="table table-hover">
+                                    <!-- Table head -->
+                                    <thead class="blue-grey lighten-4">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Name</th>
+                                            <th>City</th>
+                                            <th>Other cell</th>
+                                            <th>Rank</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- Table head -->
+
+                                    <!-- Table body -->
+                                    <tbody>
+
+                                    </tbody>
+                                    <!-- Table body -->
+                                </table>
+                                <!-- Table  -->
+
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+                <!--Grid row-->
+                <div class="row wow fadeIn">
+
+
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header text-center">
+                                Radar chart
+                            </div>
+                            <!--Card content-->
+                            <div class="card-body" >
+                                <div id="radarchart1">
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+                            <!-- Card header -->
+                            <div class="card-header text-center">
+                                Radar chart
+                            </div>
+                            <!--Card content-->
+                            <div class="card-body" id="radarchart1">
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                </div>
+                <!--Grid row-->
+            </div>
+        </main>
+        <!--Main layout-->
+
+        <!--Footer-->
+        <footer class="page-footer text-center font-small primary-color-dark darken-2 mt-4 wow fadeIn">
+
+
+            <!--Copyright-->
+            <div class="footer-copyright py-3">
+                © 2020 Copyright:
+                <a href="http://Due-Uni.de" target="_blank"> AG - LAVA - Due-Uni.de </a>
+            </div>
+            <!--/.Copyright-->
+
+        </footer>
+        <!--/.Footer-->
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.js"></script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=false&sensor=false&key=AIzaSyAtjDhf8U-jwr0D_do8nJ8ZsQhFt1Xq-f4" defer></script> -->
+    <script type='text/javascript'
+        src='https://www.bing.com/api/maps/mapcontrol?key=As2u6Xlj4NfKZ2TggP-d86HJtXC0iyfl7mod06f4K6w1b1r8LXiIUoEGIwtQhV9A&callback=loadMapScenario'
+        async defer></script>
+    <script type="text/javascript" src="//d3js.org/d3.v3.js"></script>
+    <script src="js/radar-chart.js"></script>
+    <script src="js/uinpoint.js"></script>
+    <script src="js/notuse.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/Comparison.js"></script>
+</body>
+
+</html>

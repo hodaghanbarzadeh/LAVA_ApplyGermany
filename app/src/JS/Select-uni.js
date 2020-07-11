@@ -57,121 +57,134 @@ function lookupUni(cityName, lan, fields) {
   });
 
 }
+function createPin(r, uni, tpins,rslt) {
+  let i = tpins.length;
+  //Create a pushpin for each result.
+  let loc = new Microsoft.Maps.Location(r.lat, r.lon)
+  let pin = new Microsoft.Maps.Pushpin(loc, { text: uni.Acronym.length <= 7 ? uni.Acronym : i.toString() });
+  pin.metadata = {
+    uni: uni,
+    result: r,
+    rslt:rslt
+  };
+  tpins.push(pin);
+  pin.setOptions({ enableHoverStyle: true, enableClickedStyle: false });
+  Microsoft.Maps.Events.addHandler(pin, 'click', function (args) {
+    if (infobox.pin == args.target) {
+      infobox.setOptions({ visible: !infobox.getVisible() });
+    }
+    else {
+      infobox.setOptions({
+        location: args.target.getLocation(),
+        title: args.target.metadata.uni.UniName,
+        description: "",
+        visible: true
+      });
+      infobox.pin = args.target;
+    }
+  });
+}
+function FetchInfo(unistack) {
+  let u = unistack.pop();
+  if (!u) return;
 
+  $.ajax({
+    url: 'https://nominatim.openstreetmap.org/search.php?q=' + u.UniName.replace(/ /g, "+") + '&format=json&addressdetails=1&limit=50&accept-language=de',
+
+    dataType: 'json', // Notice! JSONP <-- P (lowercase)
+    success: function (r) {
+      if (r && r.length > 0) {
+        var d=true;
+        for (var i = 0; i < r.length; i++) {
+          if ((r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
+              (r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
+            d=false;
+            map.entities.remove(window.pins)
+            createPin(r[i], u, pins,r);
+            map.entities.push(pins);
+            break;
+          }
+        }
+        if(d)
+          (window.notUse||(window.notUse=[])).push({u,r});
+        //Add the pins to the map
+
+      }
+      FetchInfo(unistack)
+    },
+    error: function (e, b, c) {
+      FetchInfo(unistack)
+    }
+  });
+}
 function unisearch(cityName) {
 
-  function createPin(r, uni, tpins) {
-    let i = tpins.length;
-    //Create a pushpin for each result.
-    let loc = new Microsoft.Maps.Location(r.lat, r.lon)
-    let pin = new Microsoft.Maps.Pushpin(loc, { text: uni.Acronym.length <= 7 ? uni.Acronym : i.toString() });
-    pin.metadata = {
-      uni: uni,
-      result: r
-    };
-    tpins.push(pin);
-    pin.setOptions({ enableHoverStyle: true, enableClickedStyle: false });
-    Microsoft.Maps.Events.addHandler(pin, 'click', function (args) {
-      if (infobox.pin == args.target) {
-        infobox.setOptions({ visible: !infobox.getVisible() });
-      }
-      else {
-        infobox.setOptions({
-          location: args.target.getLocation(),
-          title: args.target.metadata.uni.UniName,
-          description: "",
-          visible: true
-        });
-        infobox.pin = args.target;
-      }
-    });
-  }
+  
 
 
   window.pins = []
   let uniselected = []
-  unis.forEach(uni => {
+  joinUni.forEach(uni => {
     if (uni.City == cityName) {
       uniselected.push(uni)
     }
   });
   FetchInfo(uniselected);
-  function FetchInfo(unistack) {
-    let u = unistack.pop();
-    if (!u) return;
-    $.ajax({
-      url: 'https://nominatim.openstreetmap.org/search.php?q=' + u.UniName.replace(/ /g, "+") + '&format=json&addressdetails=1&limit=50&accept-language=de',
 
-      dataType: 'json', // Notice! JSONP <-- P (lowercase)
-      success: function (r) {
-        if (r && r.length > 0) {
-
-          for (var i = 0; i < r.length; i++) {
-            if (r[i].address.city.toLowerCase() == cityName.toLowerCase()) {
-              map.entities.remove(window.pins)
-              createPin(r[i], u, pins);
-              map.entities.push(pins);
-              break;
-            }
-          }
-
-          //Add the pins to the map
-
-        }
-        FetchInfo(unistack)
-      },
-      error: function (e, b, c) {
-        FetchInfo(unistack)
-      }
-    });
-  }
 }
 
 function updateuilist() {
-  let btn=$('#btnCompare');
-  btn.attr('disabled','disabled');
+  let btn = $('#btnCompare');
+  btn.attr('disabled', 'disabled');
   for (var i = 0; i < 5; i++) {
-    $('#cmplst'+i.toString()).text("").parent().addClass("d-none");
+    $('#cmplst' + i.toString()).text("").parent().addClass("d-none");
   }
   for (var i = 0; i < Comparisonlist.length; i++) {
-    let item=Comparisonlist[i];
-    $('#cmplst'+i.toString()).text(item.uni.UniName).parent().removeClass("d-none");
-    btn.attr('disabled',null);
+    let item = Comparisonlist[i];
+    $('#cmplst' + i.toString()).text(item.uni.UniName).parent().removeClass("d-none");
+    btn.attr('disabled', null);
   }
 }
 
 
 
 function loadMapScenario() {
-let cityonMapSelect=$('#cityonMapSelect');
-cityonMapSelect.click(e=>{
-$('#CityName').val(cityonMapSelect.find('span').text()).change()
-});
-  window.showCityOnBtn=function(cityName)
-  {
+  $('#btnCompare').click(()=>{
+    let ids=Comparisonlist[0].uni.UniId;
+    for(let i=1;i<Comparisonlist.length;i++)
+    {
+      ids+=","+Comparisonlist[i].uni.UniId;
+    }
+    location.href="comparison.html?ids="+ids;
+  });
+  let cityonMapSelect = $('#cityonMapSelect');
+  cityonMapSelect.click(e => {
+    $('#CityName').val(cityonMapSelect.find('span').text()).change()
+  });
+  window.showCityOnBtn = function (cityName) {
     cityonMapSelect.find('span').text(cityName);
   }
 
   Microsoft.Maps.ConfigurableMap.createFromConfig(document.getElementById('map-container'), 'style/configmap2.json', false, null, successCallback, errorCallback);
   function successCallback(mapObj) {
     window.map = mapObj;
-    Microsoft.Maps.Events.addHandler(map, 'click', function (e) { 
+    Microsoft.Maps.Events.addHandler(map, 'click', function (e) {
       $.ajax({
-        url: 'https://nominatim.openstreetmap.org/reverse?lat='+e.location.latitude+'&lon='+e.location.longitude+'&zoom=18&format=json&addressdetails=1&accept-language=de',
-  
+        url: 'https://nominatim.openstreetmap.org/reverse?lat=' + e.location.latitude + '&lon=' + e.location.longitude + '&zoom=18&format=json&addressdetails=1&accept-language=de',
+
         dataType: 'json', // Notice! JSONP <-- P (lowercase)
         success: function (r) {
           if (r && r.address && r.address.city) {
-  
+
             showCityOnBtn(r.address.city);
-  
-  
+
+
           }
         },
         error: function (e, b, c) {
         }
       });
-     });
+    });
     window.infobox = new Microsoft.Maps.Infobox(mapObj.getCenter(), {
       visible: false, autoAlignment: true, actions: [
         {
@@ -222,6 +235,7 @@ $('#CityName').val(cityonMapSelect.find('span').text()).change()
       map.entities.push(boundsBorder);
       map.entities.push(pins);
       map.entities.push(cityPolygon = {});
+      //FetchInfo(unis.filter(a=>true));
     }, 200);
   }
   function errorCallback(message) {
