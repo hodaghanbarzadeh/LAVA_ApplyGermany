@@ -32,7 +32,8 @@ $(() => {
         .append($('<label class="form-check-label" for="slct' + (i) + '"></label>')))
       .append($('<td>').text(u.UniName))
       .append($('<td>').text(u.City))
-      .append($('<td>').text(u.UniId))
+      .append($('<td>').text(u.ControlType))
+      .append($('<td>').text(u.EntityType))
       .append($('<td>').text(u.Rank))
     $table.find('tbody')
   });
@@ -165,14 +166,15 @@ $(() => {
 
 
     var cols = selectedUni.map(u => [u.uni.Acronym || u.other.UniName].concat(linchartCatName.map(prop => u.other[prop])));
-
+    var g={};
+    selectedUni.forEach(u => g[u.uni.Acronym || u.other.UniName]='area-spline');
     linechart.destroy();
     $('#linechart1 svg').remove();
     linechart = c3.generate({
       bindto: '#linechart1',
       data: {
         columns: cols,
-        type: 'line',
+        types: g,
         groups: [
           selectedUni.map(a => a.uni.Acronym || a.other.UniName)
         ]

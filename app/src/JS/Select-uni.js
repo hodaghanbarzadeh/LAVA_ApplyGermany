@@ -57,7 +57,7 @@ function lookupUni(cityName, lan, fields) {
   });
 
 }
-function createPin(r, uni, tpins,rslt) {
+function createPin(r, uni, tpins, rslt) {
   let i = tpins.length;
   //Create a pushpin for each result.
   let loc = new Microsoft.Maps.Location(r.lat, r.lon)
@@ -65,7 +65,7 @@ function createPin(r, uni, tpins,rslt) {
   pin.metadata = {
     uni: uni,
     result: r,
-    rslt:rslt
+    rslt: rslt
   };
   tpins.push(pin);
   pin.setOptions({ enableHoverStyle: true, enableClickedStyle: false });
@@ -77,7 +77,7 @@ function createPin(r, uni, tpins,rslt) {
       infobox.setOptions({
         location: args.target.getLocation(),
         title: args.target.metadata.uni.UniName,
-        description: "",
+        description: "Rank: " + args.target.metadata.uni.Rank,
         visible: true
       });
       infobox.pin = args.target;
@@ -94,19 +94,19 @@ function FetchInfo(unistack) {
     dataType: 'json', // Notice! JSONP <-- P (lowercase)
     success: function (r) {
       if (r && r.length > 0) {
-        var d=true;
+        var d = true;
         for (var i = 0; i < r.length; i++) {
-          if ((!!u.City & !!r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) || 
-              (!!u.City & !!r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
-            d=false;
+          if ((!!u.City & !!r[i].address.city && r[i].address.city.toLowerCase() == u.City.toLowerCase()) ||
+            (!!u.City & !!r[i].address.town && r[i].address.town.toLowerCase() == u.City.toLowerCase())) {
+            d = false;
             map.entities.remove(window.pins)
-            createPin(r[i], u, pins,r);
+            createPin(r[i], u, pins, r);
             map.entities.push(pins);
             break;
           }
         }
-        if(d)
-          (window.notUse||(window.notUse=[])).push({u,r});
+        if (d)
+          (window.notUse || (window.notUse = [])).push({ u, r });
         //Add the pins to the map
 
       }
@@ -119,7 +119,7 @@ function FetchInfo(unistack) {
 }
 function unisearch(cityName) {
 
-  
+
 
 
   window.pins = []
@@ -149,17 +149,16 @@ function updateuilist() {
 
 
 function loadMapScenario() {
-  $('#btnaddcomparison').click((e)=>{
+  $('#btnaddcomparison').click((e) => {
     $('#UniInfoModal').modal('hide');
     AddToComparisonlist($(e.target).data('uni'));
   });
-  $('#btnCompare').click(()=>{
-    let ids=Comparisonlist[0].uni.UniId;
-    for(let i=1;i<Comparisonlist.length;i++)
-    {
-      ids+=","+Comparisonlist[i].uni.UniId;
+  $('#btnCompare').click(() => {
+    let ids = Comparisonlist[0].uni.UniId;
+    for (let i = 1; i < Comparisonlist.length; i++) {
+      ids += "," + Comparisonlist[i].uni.UniId;
     }
-    location.href="comparison.html?ids="+ids;
+    location.href = "comparison.html?ids=" + ids;
   });
   let cityonMapSelect = $('#cityonMapSelect');
   cityonMapSelect.click(e => {
@@ -193,9 +192,46 @@ function loadMapScenario() {
       visible: false, autoAlignment: true, actions: [
         {
           label: 'Read more', eventHandler: function (e) {
-            var modal=$('#UniInfoModal').modal('show');
+            var modal = $('#UniInfoModal').modal('show');
             modal.find('.heading.lead').text(infobox.pin.metadata.uni.UniName);
-            $('#btnaddcomparison').data('uni',infobox.pin.metadata);
+            modal.find('#UniAddress').text(infobox.pin.metadata.uni.Address);
+            modal.find('#tel span').text(infobox.pin.metadata.uni.Tel);
+            modal.find('#founded span').text(infobox.pin.metadata.uni.Founded);
+            modal.find('#TotalStd span').text(infobox.pin.metadata.uni.other1[0].total_number_of_students);
+            if (sessionStorage.getItem('degree') == 1)
+              modal.find('#TuitionIntStdnB span').text(infobox.pin.metadata.uni.TuitionIntStdnB);
+            else if (sessionStorage.getItem('degree') == 2)
+              modal.find('#TuitionIntStdnB span').text(infobox.pin.metadata.uni.TuitionIntStdnM);
+            else
+              modal.find('#TuitionIntStdnB span').text(`${infobox.pin.metadata.uni.TuitionIntStdnB} (B),${infobox.pin.metadata.uni.TuitionIntStdnM} (M)`);
+            modal.find('#CampusSetting span').text(infobox.pin.metadata.uni.CampusSetting);
+            modal.find('#ControlType span').text(infobox.pin.metadata.uni.ControlType);
+            modal.find('#CampusSetting span').text(infobox.pin.metadata.uni.EntityType);
+            var a=uinpoint.filter(a=>a.uni.UniId==infobox.pin.metadata.uni.UniId)
+            let dataDounat=!a || !a.length?[]:
+              a[0].dparts.map(a=>[a.department_name,
+                (sessionStorage.getItem('degree') == 1? 
+                  a.graduations_in_appropriate_time_undergraduate_degrees:
+                  (sessionStorage.getItem('degree') == 2?
+                    a.graduations_in_appropriate_time_masters:
+                    (a.graduations_in_appropriate_time_undergraduate_degrees+
+                    a.graduations_in_appropriate_time_masters)/2
+              ))]);
+              (window.dounatchart||{ destroy: () => { } }).destroy();
+              window.dounatchart = c3.generate({
+                bindto: '#dounatChart1',
+                data: {
+                    columns: dataDounat,
+                    type : 'donut',
+                },
+                donut: {
+                    title: "Graduations In\r\n Appropriate Time"
+                },
+                legend: {
+                    show: false
+                }
+            });
+            $('#btnaddcomparison').data('uni', infobox.pin.metadata);
             //AddToComparisonlist(infobox.pin.metadata);
           }
         }
@@ -222,7 +258,7 @@ function loadMapScenario() {
       var bounds = Microsoft.Maps.LocationRect.fromLocations(new Microsoft.Maps.Location(47.15630905857346, 15.408189134456976),
         new Microsoft.Maps.Location(55.85630905857346, 5.653838560219752));
       map.setOptions({
-        maxZoom: 12,
+        maxZoom: 20,
         minZoom: 5,
         maxBounds: bounds
       });
