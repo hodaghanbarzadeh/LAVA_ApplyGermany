@@ -165,7 +165,7 @@ $(() => {
     });
 
 
-    var cols = selectedUni.map(u => [u.uni.Acronym || u.other.UniName].concat(linchartCatName.map(prop => u.other[prop])));
+    var cols = selectedUni.map(u => [u.uni.Acronym || u.other.UniName].concat(linchartCatName.map(prop => u.other[prop]*100/6)));
     var g={};
     selectedUni.forEach(u => g[u.uni.Acronym || u.other.UniName]='area-spline');
     linechart.destroy();
