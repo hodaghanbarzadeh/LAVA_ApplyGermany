@@ -2,8 +2,8 @@
     $.fn.selectMaterial = function () {
         this.each((i, item) => {
             var select1 = $(item);
-            select1.addClass("initialized")
-            $(`<span class="caret">▼</span>`)
+            select1.addClass("initialized");
+            var pin=$(`<span class="caret">▼</span>`)
                 .insertBefore(select1);
             var input1 = $(`<input  type="text" class="form-control" 
                         readonly="true" value="" role="listbox" aria-multiselectable="false" aria-disabled="false"
@@ -35,6 +35,10 @@
             });
             input1.click((e) => {
                 ul1.show();
+
+            });
+            pin.click((e) => {
+                input1.focus();
 
             });
             var intervalBlur=null;
