@@ -225,7 +225,7 @@ function loadMapScenario() {
                     type : 'donut',
                 },
                 donut: {
-                    title: "Graduations In\r\n Appropriate Time"
+                    title: "Students by area of study"
                 },
                 legend: {
                     show: false
