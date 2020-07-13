@@ -225,7 +225,7 @@ function loadMapScenario() {
                     type : 'donut',
                 },
                 donut: {
-                    title: "Students by area of study"
+                    title: "Departments"
                 },
                 legend: {
                     show: false
