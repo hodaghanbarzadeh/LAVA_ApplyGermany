@@ -206,7 +206,7 @@ function loadMapScenario() {
               modal.find('#TuitionIntStdnB span').text(`${infobox.pin.metadata.uni.TuitionIntStdnB} (B),${infobox.pin.metadata.uni.TuitionIntStdnM} (M)`);
             modal.find('#CampusSetting span').text(infobox.pin.metadata.uni.CampusSetting);
             modal.find('#ControlType span').text(infobox.pin.metadata.uni.ControlType);
-            modal.find('#EntityType span').text(infobox.pin.metadata.uni.EntityType);
+            modal.find('#SelectionType span').text(infobox.pin.metadata.uni.SelectionType);
             var a=uinpoint.filter(a=>a.uni.UniId==infobox.pin.metadata.uni.UniId)
             let dataDounat=!a || !a.length?[]:
               a[0].dparts.map(a=>[a.department_name,
