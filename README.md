@@ -21,18 +21,21 @@ Deployed Version: <a href="http://applygermany.byethost16.com/">Live Demo</a>
 Youtube Video: <a href="https://youtu.be/nDY0AahGktQ">Demo On Youtube</a>    
 <br>
 
-<a name="headers1"/>      
+<a name="headers1"/> 
+
 # Dataset from sites: 
   <a href="https://www.4icu.org/">https://www.4icu.org/</a>   
   <a href="https://ranking.zeit.de/che/de/">https://ranking.zeit.de/che/de/</a>   
   <br>
 
 <a name="headers2"/>  
+
 # Project Architecture:
 <img src="Data/ArchitectureApp.png" >
 <br>
 
 <a name="headers3"/>
+
 # Implementation Technologies:
 This project is based on the following technologies:
 
@@ -50,6 +53,7 @@ This project is based on the following technologies:
   <br>
 
 <a name="headers4"/>
+
 # To deploy the project:
 How to deploy the project locally:
 
@@ -67,6 +71,7 @@ How to deploy the project locally:
 <br>
 
 <a name="headers5"/>
+
 #  Contributors:
 •	Hoda Ghanbarzadeh: a master student of Master Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
 •	Parastoo Amirali
