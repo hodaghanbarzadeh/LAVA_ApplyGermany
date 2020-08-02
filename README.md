@@ -8,6 +8,8 @@
 
 <a name="headers"/>  
 <img src="app/src/style/Logo.png" width="100" />
+<br>
+
 # ApplyGermany (Comma Group)
 Germany is highly popular among international students. This is mainly because of the country's many excellent universities, its dynamic student life and good funding options. If you have decided to come to Germany, our platform can help you to choose a proper university through visual comparisons.
 Fill out the information form and click on "Find Uni" to find your desired university using a map.
@@ -57,6 +59,7 @@ How to deploy the project locally:
 <img src="app/src/style/page1.png" />
 <img src="app/src/style/Page2.png" />
 <img src="app/src/style/Page3.png" />
+<br>
 
 <a name="headers5"/>
 #  Contributors:
