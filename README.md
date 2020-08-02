@@ -12,10 +12,7 @@
 
 # ApplyGermany (Comma Group)
 Germany is highly popular among international students. This is mainly because of the country's many excellent universities, its dynamic student life and good funding options. If you have decided to come to Germany, our platform can help you to choose a proper university through visual comparisons.
-Fill out the information form and click on "Find Uni" to find your desired university using a map.
-
-This application has two main steps: 1. Selecting the city and universities with help of the map 
-                                     2. Comparing the Universities with the help of charts
+Fill out the information form and click on "Find Uni" to find your desired university using a map. Compare the Universities with the help of charts.
 
 Deployed Version: <a href="http://applygermany.byethost16.com/">Live Demo</a>
 <br>
@@ -75,6 +72,6 @@ How to deploy the project locally:
 <a name="headers5"/>
 
 #  Contributors:
-•	Hoda Ghanbarzadeh: a master student of Master Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
+•	Hoda Ghanbarzadeh: Master student of Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
 <br>
-•	Parastoo Amirali
+•	Parastoo Amirali:  Master student of ISE CE at the University of Duisburg-Essen. E-mail: Parastoo.Amirali@stud.uni-due.de.
