@@ -165,27 +165,29 @@ $(() => {
     });
 
 
-    var cols = selectedUni.map(u => [u.uni.Acronym || u.other.UniName].concat(linchartCatName.map(prop => u.other[prop]*100/6)));
+    var cols = selectedUni.map(u => [u.uni.Acronym || u.other.UniName].concat(linchartCatName.map(prop => (Math.round((u.other[prop]*100/6)*100)/100))));
     var g={};
-    selectedUni.forEach(u => g[u.uni.Acronym || u.other.UniName]='area-spline');
+    selectedUni.forEach(u => g[u.uni.Acronym || u.other.UniName]='line');
     linechart.destroy();
     $('#linechart1 svg').remove();
     linechart = c3.generate({
       bindto: '#linechart1',
       data: {
-        columns: cols,
+        columns: [cols[0],cols[1]],
         types: g,
         groups: [
           selectedUni.map(a => a.uni.Acronym || a.other.UniName)
         ]
       },
       axis: {
+        max:100,
         x: {
           type: 'category',
           categories: linchartCatTitle
         }
       }
     });
+    linechart.axis.max(100);
   }
   $('#tbluni input[type=checkbox]').click(selectrowchange);
 });
