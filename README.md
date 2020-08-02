@@ -51,7 +51,10 @@ How to deploy the project locally:
   4. run npm start in the terminal from the project directory
   5. got to http://localhost:8080/
 
-Project Screenshots:
+# Project Screenshots:
+<img src="app/src/style/page1.png" >
+<img src="app/src/style/page2.png" >
+<img src="app/src/style/page3.png" >
 
 <a name="headers5"/>
 # Contributors:
