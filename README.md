@@ -18,6 +18,7 @@ This application has two main steps: 1. Selecting the city and universities with
                                      2. Comparing the Universities with the help of charts
 
 Deployed Version: <a href="http://applygermany.byethost16.com/">Live Demo</a>
+<br>
 Youtube Video: <a href="https://youtu.be/nDY0AahGktQ">Demo On Youtube</a>    
 <br>
 
@@ -25,7 +26,8 @@ Youtube Video: <a href="https://youtu.be/nDY0AahGktQ">Demo On Youtube</a>
 
 # Dataset from sites: 
   <a href="https://www.4icu.org/">https://www.4icu.org/</a>   
-  <a href="https://ranking.zeit.de/che/de/">https://ranking.zeit.de/che/de/</a>   
+  <br>
+<a href="https://ranking.zeit.de/che/de/">https://ranking.zeit.de/che/de/</a>   
   <br>
 
 <a name="headers2"/>  
@@ -74,4 +76,5 @@ How to deploy the project locally:
 
 #  Contributors:
 •	Hoda Ghanbarzadeh: a master student of Master Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
+<br>
 •	Parastoo Amirali
