@@ -64,14 +64,14 @@ How to deploy the project locally:
 <br>
 
 #  Project Screenshots:
-<img src="app/src/style/page1.png" />
-<img src="app/src/style/Page2.png" />
-<img src="app/src/style/Page3.png" />
+<img src="app/src/style/page1.png"  width="600" />
+<img src="app/src/style/Page2.png"  width="600" />
+<img src="app/src/style/Page3.png"  width="600" />
 <br>
 
 <a name="headers5"/>
 
 #  Contributors:
-•	Hoda Ghanbarzadeh: Master student of Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
+•	Hoda Ghanbarzadeh: Master student of Applied Computer Science at the University of Duisburg-Essen. <br>E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
 <br>
-•	Parastoo Amirali:  Master student of ISE CE at the University of Duisburg-Essen. E-mail: Parastoo.Amirali@stud.uni-due.de.
+•	Parastoo Amirali:  Master student of Intelligent Networks at the University of Duisburg-Essen. <br>E-mail: Parastoo.Amirali@stud.uni-due.de.
