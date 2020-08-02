@@ -5,8 +5,9 @@
 - [Implementation Technologies](#headers3)
 - [To deploy the project](#headers4)
 - [Contributors](#headers5)
+
 <a name="headers"/>  
-<img src="app/src/style/Logo.png" width="100">
+<img src="app/src/style/Logo.png" width="100" />
 # ApplyGermany (Comma Group)
 Germany is highly popular among international students. This is mainly because of the country's many excellent universities, its dynamic student life and good funding options. If you have decided to come to Germany, our platform can help you to choose a proper university through visual comparisons.
 Fill out the information form and click on "Find Uni" to find your desired university using a map.
@@ -16,6 +17,7 @@ This application has two main steps: 1. Selecting the city and universities with
 
 Deployed Version: <a href="http://applygermany.byethost16.com/">Live Demo</a>
 Youtube Video: <a href="https://youtu.be/nDY0AahGktQ">Demo On Youtube</a>    
+
 <a name="headers1"/>      
 # Dataset from sites: 
   <a href="https://www.4icu.org/">https://www.4icu.org/</a>   
@@ -51,12 +53,12 @@ How to deploy the project locally:
   4. run npm start in the terminal from the project directory
   5. got to http://localhost:8080/
 
-# Project Screenshots:
-<img src="app/src/style/page1.png" >
-<img src="app/src/style/page2.png" >
-<img src="app/src/style/page3.png" >
+#  Project Screenshots:
+<img src="app/src/style/page1.png" />
+<img src="app/src/style/Page2.png" />
+<img src="app/src/style/Page3.png" />
 
 <a name="headers5"/>
-# Contributors:
+#  Contributors:
 •	Hoda Ghanbarzadeh: a master student of Master Applied Computer Science at the University of Duisburg-Essen. E-mail: Hoda.Ghanbarzadeh@stud.uni-due.de.
 •	Parastoo Amirali
