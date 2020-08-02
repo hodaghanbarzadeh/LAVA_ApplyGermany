@@ -33,7 +33,7 @@ $(() => {
       .append($('<td>').text(u.UniName))
       .append($('<td>').text(u.City))
       .append($('<td>').text(u.ControlType))
-      .append($('<td>').text(u.EntityType))
+      .append($('<td>').text(u.StudyAbroad))
       .append($('<td>').text(u.Rank))
     $table.find('tbody')
   });
