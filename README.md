@@ -19,15 +19,18 @@ This application has two main steps: 1. Selecting the city and universities with
 
 Deployed Version: <a href="http://applygermany.byethost16.com/">Live Demo</a>
 Youtube Video: <a href="https://youtu.be/nDY0AahGktQ">Demo On Youtube</a>    
+<br>
 
 <a name="headers1"/>      
 # Dataset from sites: 
   <a href="https://www.4icu.org/">https://www.4icu.org/</a>   
   <a href="https://ranking.zeit.de/che/de/">https://ranking.zeit.de/che/de/</a>   
-  
+  <br>
+
 <a name="headers2"/>  
 # Project Architecture:
 <img src="Data/ArchitectureApp.png" >
+<br>
 
 <a name="headers3"/>
 # Implementation Technologies:
@@ -44,7 +47,8 @@ This project is based on the following technologies:
 * Providing Data
   + .Net
   + Python
-  
+  <br>
+
 <a name="headers4"/>
 # To deploy the project:
 How to deploy the project locally:
@@ -54,6 +58,7 @@ How to deploy the project locally:
   3. run npm install in the terminal from the project directory
   4. run npm start in the terminal from the project directory
   5. got to http://localhost:8080/
+<br>
 
 #  Project Screenshots:
 <img src="app/src/style/page1.png" />
